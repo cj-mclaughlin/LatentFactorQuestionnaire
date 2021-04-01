@@ -1,0 +1,6 @@
+# ignore pycache files
+__pychache__/*
+
+# ignore included data and fitted values
+*.csv
+*.npy
