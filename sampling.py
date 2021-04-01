@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-def particle_filter(likelihood_fn, params, n, d, mu=0, sigma=1, n_samples=1, n_resamples=1):
+def particle_filter(likelihood_fn, params, n, d, mu=0, sigma=1, n_samples=1000, n_resamples=1000):
     """
     Particle filter method - draw normal samples, weight by fn
     param likelihood_fn: function used to weight drawn samples
@@ -51,10 +51,9 @@ def particle_filter(likelihood_fn, params, n, d, mu=0, sigma=1, n_samples=1, n_r
 
 def draw_multivariate_samples(mu, cov, n):
     """
-    draw samples n x d from normal distribution (mu, sigma)
+    draw samples n x d from multivariate normal distribution
     param mu: mean of distribution
-    param sigma: variance of distribution
-    param d: number of columns in desired sample
+    param cov: covariance of distribution
     param n: number of samples
     """
     return np.random.default_rng().multivariate_normal(mean=mu, cov=cov, size=n)

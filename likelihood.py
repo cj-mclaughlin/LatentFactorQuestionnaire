@@ -35,7 +35,7 @@ class Likelihood():
         # penalty term may on iteration
         self.iteration = 1
         # number of resamples for E-step (effects on iteration time)
-        self.n_resamples = 10000
+        self.n_resamples = 1000
 
     def sample_likelihood(self, A, B, samples):
         """

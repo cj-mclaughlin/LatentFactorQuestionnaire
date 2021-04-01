@@ -19,12 +19,16 @@ d = 2
 data_file = "data.csv"
 basis_dir = "."
 result_path = "output.csv"
+# specify prefix for new columns
+latent_colname = "latent"
 
 # fit model and save latent variables to file
 if __name__ == "__main__":
     # create EM object
-    em = ExpectationMaximization(data_file=data_file, cols=fit_cols, delta_cols=delta_cols, with_center=with_center)
+    em = ExpectationMaximization(data_file=data_file, cols=fit_cols, delta_cols=delta_cols, 
+                                with_center=with_center, latent_colname=latent_colname)
     # fit basis based on specified object
     fit = em.fit(x_dims=d, save_prefix=basis_dir)
     # save and fit latent variables in format of original dataframe
     latent = em.save_latent(basis_dir, x_dims=d, save_path=result_path)
+    # saved dataframe now has columns "latent_..." corresponding to each dimension/measurement!
